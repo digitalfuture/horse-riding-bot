@@ -1,0 +1,755 @@
+/* ============================================
+   PRETTY NAME STRATEGY — DASHBOARD STYLES
+   ============================================ */
+
+:root {
+    /* Dark theme palette */
+    --bg-primary: #0a0e17;
+    --bg-secondary: #111827;
+    --bg-card: #1a2236;
+    --bg-card-hover: #1f2a42;
+    --bg-table-row: #151d30;
+    --bg-table-hover: #1c2740;
+
+    /* Accent colors */
+    --accent-green: #10b981;
+    --accent-green-glow: rgba(16, 185, 129, 0.2);
+    --accent-red: #ef4444;
+    --accent-red-glow: rgba(239, 68, 68, 0.15);
+    --accent-blue: #3b82f6;
+    --accent-purple: #8b5cf6;
+    --accent-amber: #f59e0b;
+    --accent-cyan: #06b6d4;
+    --accent-pink: #ec4899;
+
+    /* Gradients */
+    --gradient-profit: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    --gradient-roi: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    --gradient-winrate: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    --gradient-staked: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    --gradient-best: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+    --gradient-streak: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    --gradient-hero: linear-gradient(135deg, #0a0e17 0%, #1a2236 50%, #111827 100%);
+
+    /* Text */
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+
+    /* Borders */
+    --border-color: rgba(148, 163, 184, 0.1);
+    --border-active: rgba(59, 130, 246, 0.5);
+
+    /* Shadows */
+    --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+    --shadow-glow-green: 0 0 30px rgba(16, 185, 129, 0.15);
+    --shadow-glow-blue: 0 0 30px rgba(59, 130, 246, 0.15);
+
+    /* Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+
+    /* Font */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Background pattern */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.app {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header__emoji {
+    font-size: 48px;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.header__title {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #f1f5f9, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+}
+
+.header__subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-top: 2px;
+}
+
+.header__period {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.header__badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.header__badge--accent {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.3);
+    color: var(--accent-blue);
+}
+
+/* ============================================
+   KPI CARDS
+   ============================================ */
+
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.kpi-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.kpi-card:nth-child(1) { animation-delay: 0.1s; }
+.kpi-card:nth-child(2) { animation-delay: 0.2s; }
+.kpi-card:nth-child(3) { animation-delay: 0.3s; }
+.kpi-card:nth-child(4) { animation-delay: 0.4s; }
+.kpi-card:nth-child(5) { animation-delay: 0.5s; }
+.kpi-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.kpi-card--profit::before { background: var(--gradient-profit); }
+.kpi-card--roi::before { background: var(--gradient-roi); }
+.kpi-card--winrate::before { background: var(--gradient-winrate); }
+.kpi-card--staked::before { background: var(--gradient-staked); }
+.kpi-card--best::before { background: var(--gradient-best); }
+.kpi-card--streak::before { background: var(--gradient-streak); }
+
+.kpi-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+    border-color: var(--border-active);
+}
+
+.kpi-card__icon {
+    font-size: 32px;
+    flex-shrink: 0;
+}
+
+.kpi-card__content {
+    display: flex;
+    flex-direction: column;
+}
+
+.kpi-card__label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.kpi-card__value {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    letter-spacing: -0.5px;
+}
+
+.kpi-card--profit .kpi-card__value { color: var(--accent-green); }
+.kpi-card--roi .kpi-card__value { color: var(--accent-blue); }
+.kpi-card--winrate .kpi-card__value { color: var(--accent-purple); }
+
+/* ============================================
+   CHART SECTION
+   ============================================ */
+
+.chart-section {
+    margin-bottom: 32px;
+}
+
+.chart-container {
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    padding: 28px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-card);
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.chart-title {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.chart-controls {
+    display: flex;
+    gap: 4px;
+    background: var(--bg-primary);
+    border-radius: var(--radius-sm);
+    padding: 3px;
+}
+
+.chart-btn {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.chart-btn:hover {
+    color: var(--text-primary);
+}
+
+.chart-btn.active {
+    background: var(--accent-blue);
+    color: white;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.chart-wrapper {
+    position: relative;
+    height: 380px;
+}
+
+/* ============================================
+   ANALYSIS SECTION
+   ============================================ */
+
+.analysis-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+@media (max-width: 900px) {
+    .analysis-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+.analysis-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    padding: 28px;
+    border: 1px solid var(--border-color);
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Beauty Score Bars */
+.beauty-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.beauty-bar-label {
+    width: 80px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+}
+
+.beauty-bar-track {
+    flex: 1;
+    height: 32px;
+    background: var(--bg-primary);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    position: relative;
+}
+
+.beauty-bar-fill {
+    height: 100%;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.beauty-bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.beauty-bar-stats {
+    width: 120px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.beauty-bar-winrate {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: var(--font-mono);
+}
+
+.beauty-bar-detail {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+/* Horse Leaderboard */
+.horse-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 6px;
+    transition: background 0.2s ease;
+}
+
+.horse-item:hover {
+    background: var(--bg-card-hover);
+}
+
+.horse-rank {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.horse-rank--1 { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #1a1a1a; }
+.horse-rank--2 { background: linear-gradient(135deg, #d1d5db, #9ca3af); color: #1a1a1a; }
+.horse-rank--3 { background: linear-gradient(135deg, #d97706, #b45309); color: white; }
+.horse-rank--other { background: var(--bg-primary); color: var(--text-muted); }
+
+.horse-name {
+    flex: 1;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.horse-beauty {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--accent-pink);
+}
+
+.horse-record {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    width: 60px;
+    text-align: center;
+}
+
+.horse-pnl {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    width: 80px;
+    text-align: right;
+}
+
+.horse-pnl--positive { color: var(--accent-green); }
+.horse-pnl--negative { color: var(--accent-red); }
+
+/* ============================================
+   RACE TABLE
+   ============================================ */
+
+.table-section {
+    margin-bottom: 32px;
+}
+
+.table-container {
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    padding: 28px;
+    border: 1px solid var(--border-color);
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.table-filters {
+    display: flex;
+    gap: 4px;
+    background: var(--bg-primary);
+    border-radius: var(--radius-sm);
+    padding: 3px;
+}
+
+.filter-btn {
+    padding: 6px 14px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    color: var(--text-primary);
+}
+
+.filter-btn.active {
+    background: var(--accent-blue);
+    color: white;
+}
+
+.table-scroll {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--bg-card-hover) var(--bg-primary);
+}
+
+.table-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.table-scroll::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+    border-radius: 3px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+    background: var(--bg-card-hover);
+    border-radius: 3px;
+}
+
+.race-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.race-table thead th {
+    text-align: left;
+    padding: 12px 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+    background: var(--bg-card);
+}
+
+.race-table tbody tr {
+    border-bottom: 1px solid rgba(148, 163, 184, 0.05);
+    transition: background 0.15s ease;
+}
+
+.race-table tbody tr:hover {
+    background: var(--bg-table-hover);
+}
+
+.race-table tbody td {
+    padding: 12px 14px;
+    white-space: nowrap;
+}
+
+.race-table .result-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.result-badge--win {
+    background: rgba(16, 185, 129, 0.12);
+    color: var(--accent-green);
+}
+
+.result-badge--loss {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--accent-red);
+}
+
+.pnl-cell {
+    font-family: var(--font-mono);
+    font-weight: 600;
+}
+
+.pnl-cell--positive { color: var(--accent-green); }
+.pnl-cell--negative { color: var(--accent-red); }
+
+.beauty-stars {
+    display: inline-flex;
+    gap: 1px;
+}
+
+.beauty-stars .star {
+    color: var(--accent-amber);
+    font-size: 10px;
+}
+
+.beauty-stars .star--empty {
+    color: var(--bg-primary);
+}
+
+.horse-name-cell {
+    font-weight: 600;
+}
+
+.odds-cell {
+    font-family: var(--font-mono);
+    color: var(--accent-cyan);
+}
+
+.balance-cell {
+    font-family: var(--font-mono);
+    font-weight: 600;
+}
+
+.row-hidden {
+    display: none;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.footer {
+    text-align: center;
+    padding: 32px 0;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.footer__disclaimer {
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes countUp {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.kpi-card__value.animated {
+    animation: countUp 0.5s ease forwards;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+    .app {
+        padding: 0 16px 40px;
+    }
+
+    .header {
+        padding: 20px 0;
+    }
+
+    .header__title {
+        font-size: 22px;
+    }
+
+    .header__emoji {
+        font-size: 36px;
+    }
+
+    .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .kpi-card {
+        padding: 16px;
+    }
+
+    .kpi-card__value {
+        font-size: 20px;
+    }
+
+    .chart-wrapper {
+        height: 280px;
+    }
+
+    .chart-container, .analysis-card, .table-container {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .kpi-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .header__period {
+        width: 100%;
+    }
+
+    .chart-wrapper {
+        height: 220px;
+    }
+}

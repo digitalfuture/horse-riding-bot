@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐎 Pretty Name Strategy — Horse Racing Backtest</title>
+    <meta name="description" content="Backtest dashboard for the 'Bet on the Prettiest Name' horse racing strategy. Visualizing profit/loss across 35 real UK & Ireland races.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header__logo">
+                <span class="header__emoji">🐎</span>
+                <div>
+                    <h1 class="header__title">Pretty Name Strategy</h1>
+                    <p class="header__subtitle">Backtest: betting on horses with the prettiest names</p>
+                </div>
+            </div>
+            <div class="header__period">
+                <span class="header__badge">Jan 2025 — Feb 2026</span>
+                <span class="header__badge header__badge--accent">35 races</span>
+            </div>
+        </header>
+
+        <!-- KPI Cards -->
+        <section class="kpi-grid" id="kpi-grid">
+            <div class="kpi-card kpi-card--profit" id="kpi-profit">
+                <div class="kpi-card__icon">💰</div>
+                <div class="kpi-card__content">
+                    <span class="kpi-card__label">Net Profit</span>
+                    <span class="kpi-card__value" id="kpi-profit-value">—</span>
+                </div>
+            </div>
+            <div class="kpi-card kpi-card--roi" id="kpi-roi">
+                <div class="kpi-card__icon">📈</div>
+                <div class="kpi-card__content">
+                    <span class="kpi-card__label">ROI</span>
+                    <span class="kpi-card__value" id="kpi-roi-value">—</span>
+                </div>
+            </div>
+            <div class="kpi-card kpi-card--winrate" id="kpi-winrate">
+                <div class="kpi-card__icon">🎯</div>
+                <div class="kpi-card__content">
+                    <span class="kpi-card__label">Win Rate</span>
+                    <span class="kpi-card__value" id="kpi-winrate-value">—</span>
+                </div>
+            </div>
+            <div class="kpi-card kpi-card--staked" id="kpi-staked">
+                <div class="kpi-card__icon">🎰</div>
+                <div class="kpi-card__content">
+                    <span class="kpi-card__label">Total Staked</span>
+                    <span class="kpi-card__value" id="kpi-staked-value">—</span>
+                </div>
+            </div>
+            <div class="kpi-card kpi-card--best" id="kpi-best">
+                <div class="kpi-card__icon">⭐</div>
+                <div class="kpi-card__content">
+                    <span class="kpi-card__label">Best Beauty Score</span>
+                    <span class="kpi-card__value" id="kpi-best-value">—</span>
+                </div>
+            </div>
+            <div class="kpi-card kpi-card--streak" id="kpi-streak">
+                <div class="kpi-card__icon">🔥</div>
+                <div class="kpi-card__content">
+                    <span class="kpi-card__label">Max Win Streak</span>
+                    <span class="kpi-card__value" id="kpi-streak-value">—</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chart Section -->
+        <section class="chart-section">
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h2 class="chart-title">📊 Cumulative Profit (£)</h2>
+                    <div class="chart-controls">
+                        <button class="chart-btn active" data-chart="cumulative" id="btn-cumulative">Cumulative</button>
+                        <button class="chart-btn" data-chart="perbet" id="btn-perbet">Per Bet</button>
+                    </div>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="profitChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beauty Score Analysis -->
+        <section class="analysis-section">
+            <div class="analysis-card">
+                <h2 class="section-title">🎨 Beauty Score Analysis</h2>
+                <div class="beauty-bars" id="beauty-bars"></div>
+            </div>
+            <div class="analysis-card">
+                <h2 class="section-title">🏇 Horse Leaderboard</h2>
+                <div class="horse-leaderboard" id="horse-leaderboard"></div>
+            </div>
+        </section>
+
+        <!-- Race Table -->
+        <section class="table-section">
+            <div class="table-container">
+                <div class="table-header">
+                    <h2 class="section-title">📋 All Bets</h2>
+                    <div class="table-filters">
+                        <button class="filter-btn active" data-filter="all" id="filter-all">All</button>
+                        <button class="filter-btn" data-filter="win" id="filter-win">✅ Wins</button>
+                        <button class="filter-btn" data-filter="loss" id="filter-loss">❌ Losses</button>
+                    </div>
+                </div>
+                <div class="table-scroll">
+                    <table class="race-table" id="race-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Date</th>
+                                <th>Race</th>
+                                <th>Our Pick</th>
+                                <th>💎</th>
+                                <th>Odds</th>
+                                <th>Position</th>
+                                <th>Result</th>
+                                <th>P&L</th>
+                                <th>Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody id="race-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>🐎 Pretty Name Strategy Bot · Data: Racing Post, Timeform, At The Races · Period: Jan 2025 — Feb 2026</p>
+            <p class="footer__disclaimer">⚠️ This is a historical backtest. Past results do not guarantee future profits.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+race_id,date,race_name,venue,our_pick,our_pick_beauty,our_pick_odds,our_pick_position,total_runners,winner,winner_beauty,bet_amount,profit,cumulative_profit,result
+1,2025-01-05,Novice Hurdle,Naas,Jasmin De Vaux,9,2/1,4th,12,Final Demand,3,10,-10,-10,LOSS
+2,2025-02-01,Irish Gold Cup (G1),Leopardstown,Galopin Des Champs,9,4/6,1st,8,Galopin Des Champs,9,10,6.67,-3.33,WIN
+3,2025-02-01,Dublin Racing Festival Novice Hurdle,Leopardstown,Jasmin De Vaux,9,5/2,4th,10,Final Demand,3,10,-10,-13.33,LOSS
+4,2025-03-13,Stayers' Hurdle (G1),Cheltenham,Teahupoo,8,11/8,2nd,12,Bob Olinger,4,10,-10,-23.33,LOSS
+5,2025-03-14,Champion Chase (G1),Cheltenham,Marine Nationale,7,5/1,1st,8,Marine Nationale,7,10,50,26.67,WIN
+6,2025-03-14,Gold Cup (G1),Cheltenham,Galopin Des Champs,9,4/5,2nd,9,Inothewayurthinkin,3,10,-10,16.67,LOSS
+7,2025-03-14,Albert Bartlett Novices Hurdle (G1),Cheltenham,Jasmin De Vaux,9,6/1,1st,16,Jasmin De Vaux,9,10,60,76.67,WIN
+8,2025-03-14,Ryanair Chase (G1),Cheltenham,Fact To File,2,6/4,1st,10,Fact To File,2,10,15,91.67,WIN
+9,2025-04-21,Irish Grand National,Fairyhouse,Haiti Couleurs,8,7/1,1st,24,Haiti Couleurs,8,10,70,161.67,WIN
+10,2025-04-30,Punchestown Gold Cup (G1),Punchestown,Galopin Des Champs,9,4/7,1st,6,Galopin Des Champs,9,10,5.71,167.39,WIN
+11,2025-04-30,Punchestown Novices Hurdle (G1),Punchestown,Jasmin De Vaux,9,13/8,1st,8,Jasmin De Vaux,9,10,16.25,183.64,WIN
+12,2025-05-01,Champion Stayers Hurdle (G1),Punchestown,Teahupoo,8,5/4,1st,10,Teahupoo,8,10,12.5,196.14,WIN
+13,2025-05-02,Punchestown Champion Hurdle (G1),Punchestown,Lossiemouth,7,4/5,3rd,8,Golden Ace,6,10,-10,186.14,LOSS
+14,2025-05-04,1000 Guineas (G1),Newmarket,Desert Flower,8,1/1,1st,12,Desert Flower,8,10,10,196.14,WIN
+15,2025-05-15,York Dante Stakes,York,The Lion In Winter,9,5/2,6th,11,other,0,10,-10,186.14,LOSS
+16,2025-06-06,Epsom Oaks (G1),Epsom,Desert Flower,8,3/1,3rd,9,other,0,10,-10,176.14,LOSS
+17,2025-06-07,Epsom Derby (G1),Epsom,The Lion In Winter,9,100/30,14th,18,other,0,10,-10,166.14,LOSS
+18,2025-06-17,St James Palace Stakes (G1),Royal Ascot,Field Of Gold,8,8/11,1st,10,Field Of Gold,8,10,7.27,173.41,WIN
+19,2025-07-04,Gala Stakes,Sandown,Windlord,8,6/4,1st,8,Windlord,8,10,15,188.41,WIN
+20,2025-07-06,Deauville,Deauville,The Lion In Winter,9,3/1,3rd,9,other,0,10,-10,178.41,LOSS
+21,2025-07-19,King George VI (G1),Ascot,Calandagan,8,2/1,1st,8,Calandagan,8,10,20,198.41,WIN
+22,2025-07-31,Gordon Stakes,Goodwood,Windlord,8,15/2,3rd,10,other,0,10,-10,188.41,LOSS
+23,2025-09-07,Longchamp Mile,Longchamp,The Lion In Winter,9,4/1,3rd,12,other,0,10,-10,178.41,LOSS
+24,2025-10-18,Champion Stakes (G1),Ascot,Calandagan,8,6/4,1st,12,Calandagan,8,10,15,193.41,WIN
+25,2025-10-18,QEII Stakes (G1),Ascot,The Lion In Winter,9,7/1,2nd,16,other,0,10,-10,183.41,LOSS
+26,2025-10-18,British Champions F&M Stakes (G1),Ascot,Kalpana,8,11/8,1st,12,Kalpana,8,10,13.75,197.16,WIN
+27,2025-11-01,Breeders Cup Classic (G1),Del Mar,Forever Young,8,7/2,1st,13,Forever Young,8,10,35,232.16,WIN
+28,2025-11-01,Breeders Cup Mile,Del Mar,The Lion In Winter,9,5/1,3rd,13,other,0,10,-10,222.16,LOSS
+29,2025-11-09,Brown Lad Handicap Hurdle,Naas,Spillane's Tower,6,6/5,9th,14,other,0,10,-10,212.16,LOSS
+30,2025-11-30,Hattons Grace Hurdle (G1),Fairyhouse,Teahupoo,8,1/1,1st,8,Teahupoo,8,10,10,222.16,WIN
+31,2025-12-14,Sha Tin International,Sha Tin,The Lion In Winter,9,6/1,12th,14,other,0,10,-10,212.16,LOSS
+32,2025-12-26,Kauto Star Novices Chase (G1),Kempton,Kitzbuhel,8,13/8,1st,6,Kitzbuhel,8,10,16.25,228.41,WIN
+33,2025-12-28,Christmas Hurdle (G1),Leopardstown,Teahupoo,8,5/2,1st,8,Teahupoo,8,10,25,253.41,WIN
+34,2025-12-29,December Hurdle (G1),Leopardstown,Lossiemouth,7,4/6,1st,8,Lossiemouth,7,10,6.67,260.08,WIN
+35,2026-02-02,Irish Gold Cup (G1),Leopardstown,Galopin Des Champs,9,5/1,3rd,12,other,0,10,-10,250.08,LOSS
